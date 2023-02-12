@@ -33,10 +33,10 @@ $color-neutral-400: var(--color-neutral-400);
 $color-neutral-700: var(--color-neutral-700);
 $color-neutral-800: var(--color-neutral-800);
 $color-neutral-900: var(--color-neutral-900);
-$color-text-light: $color-neutral-700;
+$color-text-light: $color-neutral-800;
 $color-text-dark: $color-neutral-100;
 $color-background-light: $color-neutral-100;
-$color-background-dark: $color-neutral-900;
+$color-background-dark: $color-neutral-700;
 
 // Need to create a light dark for this two
 $color-text-interactive-default: $color-neutral-400;
@@ -78,3 +78,24 @@ $heading-color-light: $body-text-color-light;
 
 // ? heading dark
 $heading-color-dark: $body-text-color-dark;
+
+// ? Button Change Color Scheme
+$dark-light-button-padding-inline-start: $size-11;
+$dark-light-button-padding-inline-end: $size-8;
+$dark-light-button-background-color: transparent;
+$dark-light-button-font-weight: $font-weight-semi-bold;
+$dark-light-button-font-size: $font-size-600;
+$dark-light-button-text-color: var(--text-color);
+$dark-light-button-border: rem(2) solid transparent;
+$dark-light-button-position: relative;
+
+// ? Dark Light Button Children
+$dark-light-button-svg-transform-origin: rem(250) center ;
+$dark-light-button-svg-position: absolute ;
+$dark-light-button-svg-transition: transform 900ms ease-in-out ;
+$dark-light-button-svg-fill: var(--icon-color) ;
+$dark-light-button-svg-stroke: var(--icon-color) ;
+$dark-light-button-svg-inset-inline-start: 10%;
+$dark-light-button-svg-inset-block: 0;
+$dark-light-button-svg-margin-block: auto;
+$dark-light-button-svg-inline-size: $size-5;
