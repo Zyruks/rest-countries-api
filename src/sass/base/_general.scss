@@ -5,6 +5,7 @@
 body {
   --bg-color: #{$body-background-color-light};
   --text-color: #{$body-text-color-light};
+  --bg-secondary-color: #{$header-background-color-light};
   font-weight: $body-font-weight;
   font-size: $body-font-size;
   font-family: $font-family-base;
@@ -17,6 +18,8 @@ body {
   @media (prefers-color-scheme: dark) {
     --bg-color: #{$body-background-color-dark};
     --text-color: #{$body-text-color-dark};
+    --bg-secondary-color: #{$header-background-color-dark};
+
     color: var(--text-color);
 
     background-color: var(--bg-color);
@@ -25,12 +28,14 @@ body {
   &[data-dark-mode="on"] {
     --bg-color: #{$body-background-color-dark};
     --text-color: #{$body-text-color-dark};
+    --bg-secondary-color: #{$header-background-color-dark};
   }
 
   &[data-dark-mode="off"] {
     --bg-color: #{$body-background-color-light};
     --text-color: #{$body-text-color-light};
     --bg-color-800: #{$color-neutral-100};
+    --bg-secondary-color: #{$header-background-color-light};
   }
 }
 

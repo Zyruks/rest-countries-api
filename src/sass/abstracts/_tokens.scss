@@ -55,29 +55,26 @@ $body-background-color-light: $color-background-light;
 $body-text-color-dark: $color-text-dark;
 $body-background-color-dark: $color-background-dark;
 
-// ?  navigation
-$navigation-color-light: $body-text-color-light;
-$navigation-color-hover: $color-neutral-100;
-$navigation-font-family: $font-family-accent;
-$navigation-font-size: $font-size-400;
-$navigation-font-weight: $font-weight-bold;
-$navigation-letter-spacing: $letter-spacing-loose;
-$navigation-spacing: $size-9;
-
 // ? general
-$link-color: $navigation-color-light;
-$link-color-hover: $navigation-color-hover;
+$link-color: none;
+$link-color-hover: none;
 $heading-font-family: $font-family-accent;
 $heading-font-weight: $font-weight-bold;
 $heading-letter-spacing: $letter-spacing-loose;
 $heading-line-height: 1;
 $heading-text-transform: uppercase;
 
+// ? header
+$header-background-color-light: $color-neutral-100 ;
+$header-background-color-dark: $color-neutral-800  ;
+
 // ? heading light
 $heading-color-light: $body-text-color-light;
 
 // ? heading dark
 $heading-color-dark: $body-text-color-dark;
+
+// ? COMPONENTS ---------------------------------------
 
 // ? Button Change Color Scheme
 $dark-light-button-padding-inline-start: $size-11;
@@ -99,3 +96,24 @@ $dark-light-button-svg-inset-inline-start: 10%;
 $dark-light-button-svg-inset-block: 0;
 $dark-light-button-svg-margin-block: auto;
 $dark-light-button-svg-inline-size: $size-5;
+
+// ? Search bar
+$search-border-color: transparent ;
+$search-border-radius: $border-radius-1 ;
+$search-color: var(--text-color);
+$search-font-weight: $font-weight-semi-bold;
+$search-letter-spacing: rem(-0.3);
+$search-background-color: var(--bg-secondary-color);
+$search-outline-color: transparent;
+$search-box-shadow: $box-shadow-1;
+$search-padding-block: $size-3;
+$search-padding-inline-start: $size-10;
+$search-inline-end: $size-15;
+
+// ? ==> Search bar icon
+$search-icon-position: absolute;
+$search-icon-inline-size: $size-8;
+$search-icon-z-index: 1;
+$search-icon-margin-block: auto;
+$search-icon-inset-inline-start: $size-2;
+$search-icon-inset-block: 0 ;
