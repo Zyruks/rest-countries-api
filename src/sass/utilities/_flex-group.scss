@@ -6,4 +6,9 @@
 
   column-gap: var(--flex-column-gap, $flex-group-gap);
   row-gap: var(--flex-row-gap, calc($flex-group-gap / 2));
+
+  &[data-flex-position="center-space-between"] {
+    align-items: center;
+    justify-content: space-between;
+  }
 }

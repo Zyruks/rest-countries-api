@@ -3,10 +3,10 @@
 @each $color, $shade-map in $colors {
   @each $shade, $value in $shade-map {
     .txt-#{$color}-#{$shade} {
-      color: $value;
+      color: var(--text-color-#{$shade}, $value);
     }
     .bg-#{$color}-#{$shade} {
-      background-color: $value;
+      background-color: var(--bg-color-#{$shade}, $value);
     }
   }
 }

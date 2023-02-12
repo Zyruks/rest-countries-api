@@ -2,27 +2,29 @@
 @use "colors" as *;
 @use "typography" as *;
 @use "sizes" as *;
+@use "sass:math";
 
-@function clr($color, $shade) {
-  @if map.has-key($colors, $color, $shade) {
-    @return map.get($colors, $color, $shade);
+// ? Throw an error if the parameter has a unit
+@function rem($pixel) {
+  @if math.is-unitless($pixel) {
+    @return math.div($pixel, 16) + rem;
+
+    // if $pixel have a unit divide $pixel by 16 to return rems;
   } @else {
-    @error "$colors does not have that color!";
+    @error "Don't use units when using the rem() function only numbers";
+
+    // otherwise (else)  $pixel has a unit, throw an error
   }
 }
 
-@function fs($font-size) {
-  @if map.has-key($font-sizes, $font-size) {
-    @return map.get($font-sizes, $font-size);
-  } @else {
-    @error "$font-sizes does not have that size!";
-  }
-}
+@function em($pixel) {
+  @if math.is-unitless($pixel) {
+    @return math.div($pixel, 16) + em;
 
-@function size($size) {
-  @if map.has-key($sizes, $size) {
-    @return map.get($sizes, $size);
+    // if $pixel have a unit divide $pixel by 16 to return rems;
   } @else {
-    @error "$sizes does not have that size!";
+    @error "Don't use units when using the rem() function only numbers";
+
+    // otherwise (else)  $pixel has a unit, throw an error
   }
 }
