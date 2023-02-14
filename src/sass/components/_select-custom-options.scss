@@ -1,0 +1,69 @@
+@use "../abstracts/" as *;
+
+.select-custom-options {
+  position: $selector-custom-options-position;
+
+  border-radius: $selector-custom-options-border-radius;
+  overflow: $selector-custom-options-overflow;
+
+  font-weight: $selector-custom-options-font-weight;
+  font-size: $selector-custom-options-font-size;
+
+  background-color: $selector-custom-options-background-color;
+  box-shadow: $selector-custom-options-box-shadow;
+  inset-inline: $selector-custom-options-inset-inline;
+  margin-block-start: $selector-custom-options-margin-block-start;
+
+  animation: anime-fade-in 500ms ease-in-out forwards;
+
+  li {
+    cursor: pointer;
+    padding-block: 0.4rem;
+    padding-inline: 1rem;
+
+    &:first-child {
+      padding-block-start: 1.2rem;
+    }
+
+    &:last-child {
+      padding-block-end: 1.2rem;
+    }
+
+    &:hover {
+      background-color: var(--hover-bg-color);
+    }
+  }
+}
+
+// Animations for this component
+@keyframes anime-fade-in {
+  0% {
+    transform: translateY(rem(-30));
+    opacity: 0;
+  }
+
+  40% {
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes anime-fade-out {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  40% {
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(rem(-30));
+    opacity: 0;
+  }
+}
