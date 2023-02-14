@@ -29,6 +29,7 @@ body {
     --bg-color: #{$body-background-color-dark};
     --text-color: #{$body-text-color-dark};
     --bg-secondary-color: #{$header-background-color-dark};
+    --hover-bg-color: #{$body-background-color-dark};
   }
 
   &[data-dark-mode="off"] {
@@ -36,6 +37,7 @@ body {
     --text-color: #{$body-text-color-light};
     --bg-color-800: #{$color-neutral-100};
     --bg-secondary-color: #{$header-background-color-light};
+    --hover-bg-color: #{$color-neutral-300};
   }
 }
 

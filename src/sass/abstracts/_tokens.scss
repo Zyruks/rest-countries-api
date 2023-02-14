@@ -118,3 +118,38 @@ $search-icon-z-index: 1;
 $search-icon-margin-block: auto;
 $search-icon-inset-inline-start: $size-2;
 $search-icon-inset-block: 0 ;
+
+// ? Selector Component
+$selector-border-color: transparent;
+$selector-border-radius: $border-radius-1;
+$selector-color: var(--text-color);
+$selector-font-weight: $font-weight-semi-bold;
+$selector-font-size: $font-size-400;
+$selector-background-color: var(--bg-secondary-color);
+$selector-outline-color: transparent;
+$selector-box-shadow: $box-shadow-1;
+$selector-appearance: none;
+$selector-padding-inline-start: $size-6;
+$selector-padding-inline-end: $size-12;
+$selector-padding-block: $size-4;
+
+// ? Region-container[selector] pseudo-elements
+$region-container-position: absolute;
+$region-container-z-index: 1;
+$region-container-display: block;
+$region-container-inset-inline-end: rem(20);
+$region-container-inset-block: 0;
+$region-container-margin-block: auto;
+$region-container-inline-size: rem(15);
+$region-container-block-size: rem(15);
+
+// ? Selector custom options component
+$selector-custom-options-position: absolute;
+$selector-custom-options-border-radius: $border-radius-1;
+$selector-custom-options-overflow: hidden;
+$selector-custom-options-font-weight: $font-weight-semi-bold;
+$selector-custom-options-font-size: $font-size-400;
+$selector-custom-options-background-color: var(--bg-secondary-color);
+$selector-custom-options-box-shadow: $box-shadow-1;
+$selector-custom-options-inset-inline: 0;
+$selector-custom-options-margin-block-start: $size-2;
