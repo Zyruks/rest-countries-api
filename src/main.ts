@@ -1,6 +1,7 @@
 /* imports */
 import { rotateIcons, changeText } from "./scripts/components/buttons"
-import updateColorScheme from "./scripts/components/colorMode"
+import { updateColorScheme, setContrastingProperties } from "./scripts/components/colorMode"
+import { CustomSelectOptions } from "./scripts/components/select"
 /* imports end */
 
 /* variable declarations */
@@ -19,9 +20,7 @@ const defaultColorScheme: boolean = window.matchMedia(
   "(prefers-color-scheme: dark)"
 ).matches
 
-const darkLightBtnText = darkLightBtn.querySelector(
-  "span"
-) as HTMLSpanElement
+const regionsContainer = document.querySelector(".select-container") as HTMLDivElement
 
 /* variable declaration end */
 
@@ -36,6 +35,13 @@ if (defaultColorScheme) {
   document.body.setAttribute("data-dark-mode", "off")
 }
 
+setContrastingProperties({
+  target: regionsContainer,
+  firstCustomProperty: "--select-icon-for-dark-mode",
+  secondCustomProperty: "--select-icon-for-light-mode",
+  activeValue: "100%",
+  inactiveValue: "0",
+})
 darkLightBtn.addEventListener("click", () => {
   rotateIcons({
     firstElement: moonIcon,
@@ -45,4 +51,11 @@ darkLightBtn.addEventListener("click", () => {
   })
   changeText(darkLightBtnText)
   updateColorScheme()
+  setContrastingProperties({
+    target: regionsContainer,
+    firstCustomProperty: "--select-icon-for-dark-mode",
+    secondCustomProperty: "--select-icon-for-light-mode",
+    activeValue: "100%",
+    inactiveValue: "0",
+  })
 })
