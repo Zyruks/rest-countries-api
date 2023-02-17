@@ -1,6 +1,8 @@
 @use "../abstracts/" as *;
 
 .card {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
   border-radius: $card-border-radius;
   overflow: $card-overflow;
 
@@ -15,6 +17,13 @@
   transition-property: color, background-color;
 
   padding-block-end: $card-padding-block-end;
+
+  img {
+
+    inline-size: 100%;
+    block-size: 100%;
+    aspect-ratio: 2 / 1;
+  }
 
   .text-container {
     --flow-spacer: 0.3rem;

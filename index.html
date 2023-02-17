@@ -3,24 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0" />
     <title>Rest API Countries</title>
     <link rel="stylesheet" href="src/sass/main.scss" />
 
     <!-- Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap"
       rel="stylesheet" />
     <!--  Google End -->
   </head>
   <body>
-    <header class="padding-block-6 box-shadow-1 bg-neutral-800 overflow-hidden">
-      <div class="container flex-group" data-flex-position="center-space-between">
+    <header
+      class="padding-block-6 box-shadow-1 bg-neutral-800 overflow-hidden">
+      <div
+        class="container flex-group"
+        data-flex-position="center-space-between">
         <h1 class="heading-1">Where in the world?</h1>
         <button class="btn" data-type="dark-light" data-active="dark">
-          <svg xmlns="http://www.w3.org/2000/svg" class="mode-icon moon-icon" viewBox="0 0 512 512">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="mode-icon moon-icon"
+            viewBox="0 0 512 512">
             <title>Moon</title>
             <path
               d="M160 136c0-30.62 4.51-61.61 16-88C99.57 81.27 48 159.32 48 248c0 119.29 96.71 216 216 216 88.68 0 166.73-51.57 200-128-26.39 11.49-57.38 16-88 16-119.29 0-216-96.71-216-216z"
@@ -30,7 +41,10 @@
               stroke-linejoin="round"
               stroke-width="32" />
           </svg>
-          <svg xmlns="http://www.w3.org/2000/svg" class="mode-icon sun-icon" viewBox="0 0 512 512">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="mode-icon sun-icon"
+            viewBox="0 0 512 512">
             <title>Sunny</title>
             <path
               fill="none"
@@ -55,10 +69,15 @@
     </header>
     <main>
       <section class="margin-block-start-8">
-        <div class="container flex-group" data-flex-position="center-space-between">
+        <div
+          class="container flex-group"
+          data-flex-position="center-space-between">
           <div class="search-bar-container">
             <label for="searchbar"></label>
-            <svg xmlns="http://www.w3.org/2000/svg" class="search-outline" viewBox="0 0 512 512">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="search-outline"
+              viewBox="0 0 512 512">
               <title>Search</title>
               <path
                 d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z"
@@ -85,7 +104,11 @@
           </div>
           <div class="select-container">
             <label for="regions"></label>
-            <select class="select" name="regions" id="regions" aria-expanded="true">
+            <select
+              class="select"
+              name="regions"
+              id="regions"
+              aria-expanded="true">
               <option selected value="">Filter by Region</option>
               <option value="africa">Africa</option>
               <option value="america">America</option>
@@ -96,78 +119,31 @@
           </div>
         </div>
       </section>
-      <section class="main">
-        <div class="container grid-auto-fit">
-          <!-- ! This is a Mock Up delete afterward -->
-          <div class="card">
-            <div class="card__img-container">
-              <img src="https://flagcdn.com/w320/is.png" alt="" />
-            </div>
-            <div class="text-container">
-              <h2 class="heading-2 | margin-block-4">Germany</h2>
-              <ul class="flow">
-                <li><strong>Population: </strong>81,770,900</li>
-                <li><strong>Region: </strong>Europe</li>
-                <li><strong>Capital: </strong>Berlin</li>
-              </ul>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card__img-container">
-              <img src="https://flagcdn.com/w320/is.png" alt="" />
-            </div>
-            <div class="text-container">
-              <h2 class="heading-2 | margin-block-4">Germany</h2>
-              <ul class="flow">
-                <li><strong>Population: </strong>81,770,900</li>
-                <li><strong>Region: </strong>Europe</li>
-                <li><strong>Capital: </strong>Berlin</li>
-              </ul>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card__img-container">
-              <img src="https://flagcdn.com/w320/is.png" alt="" />
-            </div>
-            <div class="text-container">
-              <h2 class="heading-2 | margin-block-4">Germany</h2>
-              <ul class="flow">
-                <li><strong>Population: </strong>81,770,900</li>
-                <li><strong>Region: </strong>Europe</li>
-                <li><strong>Capital: </strong>Berlin</li>
-              </ul>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card__img-container">
-              <img src="https://flagcdn.com/w320/is.png" alt="" />
-            </div>
-            <div class="text-container">
-              <h2 class="heading-2 | margin-block-4">Germany</h2>
-              <ul class="flow">
-                <li><strong>Population: </strong>81,770,900</li>
-                <li><strong>Region: </strong>Europe</li>
-                <li><strong>Capital: </strong>Berlin</li>
-              </ul>
-            </div>
-          </div>
-          <!-- ! This is a Mock Up delete afterward end -->
-        </div>
+      <section class="main | margin-block-start-8">
+        <div class="container grid-auto-fit"></div>
       </section>
     </main>
 
     <!-- This is for later -->
-    <template>
+    <template id="card-template">
       <div class="card">
-        <div class="card__img-container">
-          <img src="https://flagcdn.com/w320/is.png" alt="" />
-        </div>
+        <img src="example" alt="" />
+
         <div class="text-container">
-          <h2 class="heading-2 | margin-block-4">Germany</h2>
+          <h2 class="heading-2 | margin-block-4">Title</h2>
           <ul class="flow">
-            <li><strong>Population: </strong>81,770,900</li>
-            <li><strong>Region: </strong>Europe</li>
-            <li><strong>Capital: </strong>Berlin</li>
+            <li>
+              <strong>Population: </strong>
+              <span class="card-population"> Population Number </span>
+            </li>
+            <li>
+              <strong>Region: </strong
+              ><span class="card-region"> Region Value</span>
+            </li>
+            <li>
+              <strong>Capital: </strong
+              ><span class="card-capital"> Capital Value</span>
+            </li>
           </ul>
         </div>
       </div>
