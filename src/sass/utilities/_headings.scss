@@ -12,10 +12,9 @@
 }
 
 .heading-2 {
-  @include heading(
-    $font-size-500,
-    $color-neutral-900,
-  );
+  color: var(--text-color);
+  font-weight: $font-weight-bold;
+  font-size: $font-size-600;
 }
 
 .heading-3 {
