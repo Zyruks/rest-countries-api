@@ -1,7 +1,7 @@
 @use "../abstracts/" as *;
 
 .grid-auto-fit {
-  --min-item-width: rem(250);
+  --min-item-width: #{rem(220)};
 
   display: grid;
   grid-gap: var(--grid-gap, $grid-gap);
