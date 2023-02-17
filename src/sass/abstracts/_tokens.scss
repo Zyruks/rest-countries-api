@@ -35,7 +35,9 @@ $color-neutral-700: var(--color-neutral-700);
 $color-neutral-800: var(--color-neutral-800);
 $color-neutral-900: var(--color-neutral-900);
 $color-text-light: $color-neutral-800;
+$color-secondary-text-color-light: $color-neutral-700;
 $color-text-dark: $color-neutral-100;
+$color-secondary-text-color-dark: $color-neutral-200;
 $color-background-light: $color-neutral-100;
 $color-background-dark: $color-neutral-700;
 
@@ -153,3 +155,16 @@ $selector-custom-options-background-color: var(--bg-secondary-color);
 $selector-custom-options-box-shadow: $box-shadow-1;
 $selector-custom-options-inset-inline: 0;
 $selector-custom-options-margin-block-start: $size-2;
+
+// ? card component
+$card-border-radius: $border-radius-1;
+$card-overflow: hidden;
+$card-font-weight: $font-weight-default;
+$card-background-color: var(--bg-secondary-color);
+$card-box-shadow: $box-shadow-2;
+$card-padding-block-end: $size-4;
+$card__text-container-padding: $size-4;
+$card__text-container-padding-block-start: 0;
+$card__text-container-color: var(--text-secondary-color);
+$card__strong-color: var(--text-color);
+$card__strong-font-weight: $font-weight-semi-bold;
