@@ -78,12 +78,22 @@ regionSelector.addEventListener("mousedown", (e: Event) => {
 })
 
 /* It's fetching the countries from the API and rendering them on the page. */
-const countries = await fetchCountries("data.json")
 
-const cards = new Cards()
-const info = new Info(countries)
+// Create this to avoid error of Vite while building, !Top-level await is not available in the configured target environment
 
-cards.renderCards(countries)
-info.renderInfo()
+/* TODO
+  - [ ] Check how to solve the Top-Level await problem in a more efficient way
+*/
+async function dataFetch() {
+  const countries = await fetchCountries("data.json")
+
+  const cards = new Cards()
+  const info = new Info(countries)
+
+  cards.renderCards(countries)
+  info.renderInfo()
+}
+
+dataFetch()
 
 /* Event listeners end */
