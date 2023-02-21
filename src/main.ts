@@ -85,7 +85,7 @@ regionSelector.addEventListener("mousedown", (e: Event) => {
   - [ ] Check how to solve the Top-Level await problem in a more efficient way
 */
 async function dataFetch() {
-  const countries = await fetchCountries("data.json")
+  const countries = await fetchCountries("https://restcountries.com/v3.1/all")
 
   const cards = new Cards()
   const info = new Info(countries)
