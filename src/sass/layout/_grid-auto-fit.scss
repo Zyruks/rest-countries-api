@@ -4,10 +4,17 @@
   --min-item-width: #{rem(220)};
 
   display: grid;
-  grid-gap: var(--grid-gap, $grid-gap);
+
   grid-template-columns:
     repeat(
       auto-fit,
       minmax(min(var(--min-item-width), 100%), 1fr)
     );
+
+  column-gap: var(--grid-gap-column, $grid-gap);
+  row-gap: var(--grid-gap-row, $grid-gap);
+}
+
+.grid-auto-fit.mx-auto {
+  justify-items: center;
 }
