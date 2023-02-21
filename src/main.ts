@@ -5,7 +5,8 @@ import {
   setContrastingProperties,
 } from "./scripts/components/colorMode"
 import { CustomSelectOptions } from "./scripts/components/select"
-import { renderCountries } from "./scripts/components/cards"
+import { fetchCountries } from "./scripts/tools/fetch"
+import { Cards } from "./scripts/components/cards"
 /* imports end */
 
 /* variable declarations */
@@ -92,5 +93,9 @@ regionSelector.addEventListener("mousedown", (e: Event) => {
   regionCustomOption.hideOnClickOutsideElement()
 })
 
-renderCountries()
+/* It's fetching the countries from the API and rendering them on the page. */
+const countries = await fetchCountries("data.json")
+
+const cards = new Cards()
+cards.renderCards(countries)
 /* Event listeners end */
