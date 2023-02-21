@@ -1,41 +1,25 @@
 /* imports */
 import { rotateIcons, changeText } from "./scripts/components/buttons"
-import {
-  updateColorScheme,
-  setContrastingProperties,
-} from "./scripts/components/colorMode"
+import { updateColorScheme, setContrastingProperties } from "./scripts/components/colorMode"
 import { CustomSelectOptions } from "./scripts/components/select"
 import { fetchCountries } from "./scripts/tools/fetch"
 import { Cards } from "./scripts/components/cards"
+import { Info } from "./scripts/components/info"
 /* imports end */
 
 /* variable declarations */
-const darkLightBtn = document.querySelector(
-  '.btn[data-type="dark-light"]'
-) as HTMLButtonElement
+const darkLightBtn = document.querySelector('.btn[data-type="dark-light"]') as HTMLButtonElement
 
-const sunIcon = document.querySelector(
-  ".sun-icon"
-) as HTMLOrSVGImageElement
-const moonIcon = document.querySelector(
-  ".moon-icon"
-) as HTMLOrSVGImageElement
+const sunIcon = document.querySelector(".sun-icon") as HTMLOrSVGImageElement
+const moonIcon = document.querySelector(".moon-icon") as HTMLOrSVGImageElement
 
-const defaultColorScheme: boolean = window.matchMedia(
-  "(prefers-color-scheme: dark)"
-).matches
+const defaultColorScheme: boolean = window.matchMedia("(prefers-color-scheme: dark)").matches
 
-const darkLightBtnText = darkLightBtn.querySelector(
-  "span"
-) as HTMLSpanElement
+const darkLightBtnText = darkLightBtn.querySelector("span") as HTMLSpanElement
 
-const regionsContainer = document.querySelector(
-  ".select-container"
-) as HTMLDivElement
+const regionsContainer = document.querySelector(".select-container") as HTMLDivElement
 
-const regionSelector = document.querySelector(
-  "#regions"
-) as HTMLSelectElement
+const regionSelector = document.querySelector("#regions") as HTMLSelectElement
 const regionCustomOption = new CustomSelectOptions(regionSelector)
 /* variable declaration end */
 
@@ -97,5 +81,9 @@ regionSelector.addEventListener("mousedown", (e: Event) => {
 const countries = await fetchCountries("data.json")
 
 const cards = new Cards()
+const info = new Info(countries)
+
 cards.renderCards(countries)
+info.renderInfo()
+
 /* Event listeners end */
