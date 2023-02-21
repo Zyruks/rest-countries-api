@@ -1,5 +1,28 @@
 @use "../abstracts/" as *;
 
+.button {
+  border-color: transparent;
+  border-radius: rem(2);
+
+  color: var(--text-color);
+  font-size: $font-size-300;
+
+  background-color: var(--bg-secondary-color);
+  box-shadow: $box-shadow-1;
+  padding-block: $size-1;
+  padding-inline: $size-6;
+
+  &:hover {
+    border: rem(2) solid var(--bg-secondary-color);
+
+    background-color: var(--bg-color);
+  }
+
+  @include mq(large) {
+    font-size: $font-size-400;
+  }
+}
+
 .btn[data-type="dark-light"] {
   position: $dark-light-button-position;
 
