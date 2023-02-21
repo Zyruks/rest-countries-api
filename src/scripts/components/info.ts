@@ -164,9 +164,10 @@ export class Info {
       button.addEventListener("click", () => {
         countries.forEach((country) => {
           if (button.textContent && button.textContent === country.name) {
+            const buttonText = button.textContent
             this.removeInfo()
             setTimeout(() => {
-              this.updateText(countries, template, button.textContent.toLocaleLowerCase())
+              this.updateText(countries, template, buttonText.toLocaleLowerCase())
             }, 500)
           }
         })
