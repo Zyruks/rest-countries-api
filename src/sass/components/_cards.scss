@@ -6,7 +6,7 @@
   border-radius: $card-border-radius;
   overflow: $card-overflow;
 
-  max-inline-size: rem(280);
+  max-inline-size: $card-max-inline-size;
 
   font-weight: $card-font-weight;
 
@@ -42,6 +42,6 @@
   }
 
   &:hover {
-    transform: scale(1.05);
+    transform: $card-hover-transform;
   }
 }

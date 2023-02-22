@@ -168,3 +168,5 @@ $card__text-container-padding-block-start: 0;
 $card__text-container-color: var(--text-secondary-color);
 $card__strong-color: var(--text-color);
 $card__strong-font-weight: $font-weight-semi-bold;
+$card-max-inline-size: rem(280);
+$card-hover-transform: scale(1.05);
