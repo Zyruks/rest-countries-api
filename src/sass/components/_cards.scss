@@ -6,15 +6,18 @@
   border-radius: $card-border-radius;
   overflow: $card-overflow;
 
+  max-inline-size: rem(280);
+
   font-weight: $card-font-weight;
 
   background-color: $card-background-color;
 
   box-shadow: $card-box-shadow;
+  cursor: pointer;
 
   transition-timing-function: ease-in-out;
   transition-duration: 500ms;
-  transition-property: color, background-color;
+  transition-property: color, background-color, transform;
 
   padding-block-end: $card-padding-block-end;
 
@@ -36,5 +39,9 @@
   strong {
     color: $card__strong-color;
     font-weight: $card__strong-font-weight;
+  }
+
+  &:hover {
+    transform: scale(1.05);
   }
 }
