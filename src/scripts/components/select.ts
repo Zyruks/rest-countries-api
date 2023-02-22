@@ -77,4 +77,29 @@ export class CustomSelectOptions {
       }
     })
   }
+  /* TODO updateCardVisibility()
+  - [ ] create a transition for when the cards are re-arranged
+  */
+  updateCardVisibility() {
+    const cards: NodeListOf<HTMLDivElement> = document.querySelectorAll(".card")
+
+    cards.forEach((card: HTMLDivElement) => {
+      // Make sure the card is visible by removing the "dp-none" class
+      card.classList.remove("dp-none")
+
+      // If the region selector is empty, show all cards
+      if (this.selector.value === "") {
+        card.classList.remove("dp-none")
+
+        return
+      }
+
+      // If the region selector has a value and it doesn't match the card's region data attribute, hide the card
+      if (this.selector.value.toLocaleLowerCase() !== card.dataset.region) {
+        card.classList.add("dp-none")
+
+        return
+      }
+    })
+  }
 }
