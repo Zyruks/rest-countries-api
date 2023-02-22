@@ -58,7 +58,7 @@
       <section class="search-section margin-block-start-8">
         <div class="container flex-group" data-flex-position="center-space-between">
           <div class="search-bar-container">
-            <label for="searchbar"></label>
+            <label for="search-bar"></label>
             <svg xmlns="http://www.w3.org/2000/svg" class="search-outline" viewBox="0 0 512 512">
               <title>Search</title>
               <path
@@ -77,12 +77,16 @@
             </svg>
 
             <input
+              list="card-name"
               class="search"
               type="text"
-              name="searchbar"
-              id="searchbar"
+              name="search-bar"
+              id="search-bar"
               placeholder="Search for a country..." />
+
+            <datalist id="card-name"> </datalist>
           </div>
+
           <div class="select-container">
             <label for="regions"></label>
             <select class="select" name="regions" id="regions" aria-expanded="true">

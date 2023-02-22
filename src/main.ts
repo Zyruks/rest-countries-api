@@ -5,6 +5,7 @@ import { CustomSelectOptions } from "./scripts/components/select"
 import { fetchCountries } from "./scripts/tools/fetch"
 import { Cards } from "./scripts/components/cards"
 import { Info } from "./scripts/components/info"
+import { Search } from "./scripts/components/search"
 /* imports end */
 
 /* variable declarations */
@@ -18,6 +19,8 @@ const defaultColorScheme: boolean = window.matchMedia("(prefers-color-scheme: da
 const darkLightBtnText = darkLightBtn.querySelector("span") as HTMLSpanElement
 
 const regionsContainer = document.querySelector(".select-container") as HTMLDivElement
+
+const searchInput = document.querySelector("#search-bar") as HTMLInputElement
 
 const regionSelector = document.querySelector("#regions") as HTMLSelectElement
 const regionCustomOption = new CustomSelectOptions(regionSelector)
@@ -92,6 +95,10 @@ async function dataFetch() {
 
   cards.renderCards(countries)
   info.renderInfo()
+
+  const search = new Search(searchInput)
+  search.createOptions()
+  search.searchUpdate()
 }
 
 dataFetch()
