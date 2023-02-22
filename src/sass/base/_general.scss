@@ -6,6 +6,8 @@ body {
   --bg-color: #{$body-background-color-light};
   --text-color: #{$body-text-color-light};
   --bg-secondary-color: #{$header-background-color-light};
+  overflow-x: hidden;
+
   font-weight: $body-font-weight;
   font-size: $body-font-size;
   font-family: $font-family-base;
