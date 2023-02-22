@@ -1,16 +1,24 @@
 @use "../abstracts/" as *;
 
 .heading-1 {
-  @include heading($font-size-500, $color-neutral-900);
+  color: var(--text-color);
+  font-weight: $heading-font-weight;
+  font-size: $font-size-500;
+
+  font-family: $heading-font-family;
+  line-height: $heading-line-height;
+  letter-spacing: inherit;
+  text-transform: uppercase;
 }
 
 .heading-2 {
-  @include heading(
-    $font-size-500,
-    $color-neutral-900,
-  );
+  color: var(--text-color);
+  font-weight: $font-weight-bold;
+  font-size: $font-size-700;
 }
 
 .heading-3 {
-  @include heading($font-size-700, $color-neutral-400);
+  color: var(--text-color);
+  font-weight: $font-weight-bold;
+  font-size: $font-size-600;
 }
