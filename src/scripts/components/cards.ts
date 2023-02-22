@@ -12,12 +12,13 @@ export class Cards {
 
       card.dataset.cardId = country.name.toLocaleLowerCase()
 
-      node.querySelector("h2")!.textContent = country.name
-      node.querySelector("img")!.src = country.flag
-      node.querySelector("img")!.alt = `${country.name} Flag`
-      node.querySelector(".card-population")!.textContent = country.population.toLocaleString()
-      node.querySelector(".card-region")!.textContent = country.region
-      node.querySelector(".card-capital")!.textContent = country.capital
+      card.querySelector("h2")!.textContent = country.name
+      card.querySelector("img")!.src = country.flag
+      card.querySelector("img")!.alt = `${country.name} Flag`
+      card.querySelector(".card-population")!.textContent = country.population.toLocaleString()
+      card.querySelector(".card-region")!.textContent = country.region
+      card.querySelector(".card-capital")!.textContent = country.capital
+      card.dataset.region = country.region.toLocaleLowerCase()
 
       container.appendChild(node)
     })
