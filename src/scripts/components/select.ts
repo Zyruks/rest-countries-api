@@ -9,74 +9,105 @@ export class CustomSelectOptions {
 
   // Method to create the custom select options
   createOptions() {
+    // Set the "aria-expanded" attribute of the selector to "true"
     this.selector.setAttribute("aria-expanded", "true")
+
+    // Rotate the select icon using a CSS custom property
     this.parentElement.style.setProperty("--rotate-select-icon", "-180deg")
 
-    // Create the options container
+    // Create the options container element
     const customSelect: HTMLUListElement = document.createElement("ul")
     customSelect.className = "select-custom-options"
+
+    // Get the original options elements from the selector
     const originalOptionsElements = Array.from(this.selector.children) as HTMLOptionElement[]
 
-    // Add the custom select options
-
-    originalOptionsElements.forEach((child: HTMLOptionElement) => {
+    // Add the custom options to the custom select element
+    originalOptionsElements.forEach((option: HTMLOptionElement) => {
+      // Create a list item element for the custom option
       const customSelectOptions: HTMLLIElement = document.createElement("li")
 
-      // This is if check if the child is selected and have a value of ""
-      // If so skip to the next iteration
-      // This if won't show the first option if this one is selected
-      if (child.selected === true && child.value === "") {
+      // Skip this iteration if the child is selected and has a value of ""
+      // This will not show the first option if it is selected
+      if (option.selected === true && option.value === "") {
         return
       }
 
-      child.value === ""
+      // Set the text content of the custom option based on the value of the original option
+      option.value === ""
         ? (customSelectOptions.textContent = "All regions")
-        : (customSelectOptions.textContent = child.textContent)
+        : (customSelectOptions.textContent = option.textContent)
 
+      // Append the custom option to the custom select element
       customSelect.appendChild(customSelectOptions)
 
-      // Add an event listener for when an option is clicked
-      customSelectOptions.addEventListener("mousedown", (event) => {
-        event.stopPropagation()
-        this.selector.value = child.value
-        this.selector.setAttribute("aria-expanded", "false")
-        this.selector.dispatchEvent(new Event("change"))
-        this.parentElement.dispatchEvent(new Event("change"))
-
-        // Animation before removing the customSelect
-
-        customSelect.style.animationName = "anime-fade-out"
-        this.parentElement.style.setProperty("--rotate-select-icon", "0")
-
-        setTimeout(() => {
-          customSelect.remove()
-        }, 500)
-      })
+      // Attaching an event listener to each custom select option.
+      this.attachCustomSelectOptionEvent(customSelect, customSelectOptions, option)
     })
 
-    // Add the custom options to the page
+    // Append the custom select element to the parent element of the selector
     this.parentElement.append(customSelect)
+  }
+
+  attachCustomSelectOptionEvent(
+    customSelect: HTMLUListElement,
+    customSelectOptions: HTMLLIElement,
+    option: HTMLOptionElement
+  ) {
+    customSelectOptions.addEventListener("mousedown", (event) => {
+      event.stopPropagation()
+
+      // Set the value of the selector to the value of the original option
+      this.selector.value = option.value
+
+      // Update the "aria-expanded" attribute of the selector to "false"
+      this.selector.setAttribute("aria-expanded", "false")
+
+      // Dispatch a "change" event for the selector and its parent element
+      this.selector.dispatchEvent(new Event("change"))
+      this.parentElement.dispatchEvent(new Event("change"))
+
+      // Add a fade-out animation to the custom select element and rotate the select icon back to its original position
+      customSelect.style.animationName = "anime-fade-out"
+      this.parentElement.style.setProperty("--rotate-select-icon", "0")
+
+      // Remove the custom select element from the DOM after a delay of 500ms
+      setTimeout(() => {
+        customSelect.remove()
+      }, 500)
+
+      // Update the visibility of the cards based on the selected region
+      this.updateCardVisibility()
+    })
   }
 
   // Method for hiding the custom options when a click occurs outside of it
   hideOnClickOutsideElement() {
     document.body.addEventListener("click", (event: Event) => {
+      // Check if the click target is not the region selector and the selector is expanded
       if (
         !this.selector.contains(event.target as HTMLElement) &&
         this.selector.getAttribute("aria-expanded") === "true"
       ) {
+        // Get the custom options element and add a fade-out animation
         const customOptions = this.parentElement.querySelector(
           ".select-custom-options"
         ) as HTMLUListElement
         customOptions.style.animationName = "anime-fade-out"
+
+        // Rotate the select icon back to its original position
         this.parentElement.style.setProperty("--rotate-select-icon", "0")
+
         setTimeout(() => {
           customOptions.remove()
         }, 500)
+
+        // Update the aria-expanded attribute of the selector to "false"
         this.selector.setAttribute("aria-expanded", "false")
       }
     })
   }
+
   /* TODO updateCardVisibility()
   - [ ] create a transition for when the cards are re-arranged
   */
