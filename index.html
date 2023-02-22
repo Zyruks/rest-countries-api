@@ -75,21 +75,20 @@
                 stroke-width="32"
                 d="M338.29 338.29L448 448" />
             </svg>
-            <div class="search-bar-container">
-              <input
-                class="search"
-                type="text"
-                name="searchbar"
-                id="searchbar"
-                placeholder="Search for a country..." />
-            </div>
+
+            <input
+              class="search"
+              type="text"
+              name="searchbar"
+              id="searchbar"
+              placeholder="Search for a country..." />
           </div>
           <div class="select-container">
             <label for="regions"></label>
             <select class="select" name="regions" id="regions" aria-expanded="true">
               <option selected value="">Filter by Region</option>
               <option value="africa">Africa</option>
-              <option value="america">America</option>
+              <option value="americas">America</option>
               <option value="asia">Asia</option>
               <option value="europe">Europe</option>
               <option value="oceania">Oceania</option>
@@ -105,7 +104,7 @@
 
     <!-- This is for later -->
     <template id="card-template">
-      <div class="card" data-card-id="">
+      <div class="card" data-card-id="" data-region="">
         <img src="example" alt="" />
 
         <div class="text-container">
