@@ -1,14 +1,13 @@
-/* imports */
-import { rotateIcons, changeText } from "./scripts/components/buttons"
-import { updateColorScheme, setContrastingProperties } from "./scripts/components/colorMode"
+//? imports
+import { LightDarkMode } from "./scripts/components/colorMode"
 import { CustomSelectOptions } from "./scripts/components/select"
 import { fetchCountries } from "./scripts/tools/fetch"
 import { Cards } from "./scripts/components/cards"
 import { Info } from "./scripts/components/info"
 import { Search } from "./scripts/components/search"
-/* imports end */
+//?  imports end
 
-/* variable declarations */
+//? variable declarations
 const darkLightBtn = document.querySelector('.btn[data-type="dark-light"]') as HTMLButtonElement
 
 const sunIcon = document.querySelector(".sun-icon") as HTMLOrSVGImageElement
@@ -23,9 +22,12 @@ const regionsContainer = document.querySelector(".select-container") as HTMLDivE
 const searchInput = document.querySelector("#search-bar") as HTMLInputElement
 
 const regionSelector = document.querySelector("#regions") as HTMLSelectElement
-const regionCustomOption = new CustomSelectOptions(regionSelector)
-/* variable declaration end */
 
+const regionCustomOption = new CustomSelectOptions(regionSelector)
+const colorSwitcher = new LightDarkMode()
+//? variable declaration end
+
+//! Executable at beginning
 /* Checking if the user's browser has a default color scheme of dark mode. If it does, it sets the
 local storage to "on" and sets the data attribute to "on". If it doesn't, it sets the local storage
 to "off" and sets the data attribute to "off". */
@@ -36,37 +38,25 @@ if (defaultColorScheme) {
   localStorage.setItem("darkMode", "off")
   document.body.setAttribute("data-dark-mode", "off")
 }
-
-setContrastingProperties({
-  target: regionsContainer,
-  firstCustomProperty: "--select-icon-for-dark-mode",
-  secondCustomProperty: "--select-icon-for-light-mode",
-  activeValue: "100%",
-  inactiveValue: "0",
-})
-
 /* It's setting the value of the region selector to an empty string every time you refresh the page. */
 regionSelector.value = ""
 
+//! Executable at beginning end
+
+colorSwitcher.setContrastingProperties(regionsContainer)
+
 /* Event Listeners */
 darkLightBtn.addEventListener("click", () => {
-  rotateIcons({
+  colorSwitcher.rotateIcons({
     firstElement: moonIcon,
     secondElement: sunIcon,
     transformProperty: "--rotate",
-    transformModifyValue: "180deg",
+    transformPropertyValue: "180deg",
   })
-  changeText(darkLightBtnText)
 
-  updateColorScheme()
-
-  setContrastingProperties({
-    target: regionsContainer,
-    firstCustomProperty: "--select-icon-for-dark-mode",
-    secondCustomProperty: "--select-icon-for-light-mode",
-    activeValue: "100%",
-    inactiveValue: "0",
-  })
+  colorSwitcher.changeText(darkLightBtnText)
+  colorSwitcher.updateColorScheme()
+  colorSwitcher.setContrastingProperties(regionsContainer)
 })
 
 /* It's preventing the default behavior of the region selector. It's also checking if the custom
@@ -74,26 +64,25 @@ options are already created. If they are not, it's creating them. It's also hidi
 regionSelector.addEventListener("mousedown", (e: Event) => {
   e.preventDefault()
 
-  if (!document.querySelector(".select-custom-options") as Boolean)
+  if (!document.querySelector(".select-custom-options") as Boolean) {
     regionCustomOption.createOptions()
+  }
 
   regionCustomOption.hideOnClickOutsideElement()
 })
 
-/* It's fetching the countries from the API and rendering them on the page. */
-
-// Create this to avoid error of Vite while building, !Top-level await is not available in the configured target environment
-
 /* TODO
   - [ ] Check how to solve the Top-Level await problem in a more efficient way
+
+  Create this function to avoid error from Vite while building, !Top-level await is not available in the configured target environment
 */
 async function dataFetch() {
   const countries = await fetchCountries("https://restcountries.com/v3.1/all")
 
-  const cards = new Cards()
+  const cards = new Cards(countries)
   const info = new Info(countries)
 
-  cards.renderCards(countries)
+  cards.renderCards()
   info.renderInfo()
 
   const search = new Search(searchInput)
