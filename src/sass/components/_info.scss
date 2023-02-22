@@ -3,6 +3,8 @@
 .info {
   background-color: var(--bg-color);
 
+  transition: background-color 500ms ease-in-out;
+
   animation: anime-fade-in-info 500ms ease-in-out;
 
   .main-block {

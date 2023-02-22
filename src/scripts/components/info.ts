@@ -14,6 +14,12 @@ export class Info {
     const infoTemplate = document.querySelector("#info") as HTMLTemplateElement
 
     allCards.forEach((card) => {
+      card.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          this.updateText(countries, infoTemplate, card.dataset.cardId as string)
+          this.toggleElements()
+        }
+      })
       card.addEventListener("click", () => {
         this.updateText(countries, infoTemplate, card.dataset.cardId as string)
         this.toggleElements()

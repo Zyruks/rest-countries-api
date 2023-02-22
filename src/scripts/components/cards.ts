@@ -1,12 +1,21 @@
 import { Country } from "../tools/fetch"
 
 export class Cards {
-  async renderCards(fetchData: Country[]) {
-    const countries = fetchData
+  countries: Country[]
+
+  constructor(fetchData: Country[]) {
+    this.countries = fetchData
+  }
+
+  /**
+   * We're looping through the countries array, cloning the card template, and then adding the country
+   * data to the cloned template
+   */
+  renderCards() {
     const cardTemplate = document.getElementById("card-template") as HTMLTemplateElement
     const container = document.querySelector(".card-section .container") as HTMLDivElement
 
-    countries.forEach((country) => {
+    this.countries.forEach((country) => {
       const node = cardTemplate.content.cloneNode(true) as HTMLElement
       const card = node.querySelector(".card") as HTMLDivElement
 
