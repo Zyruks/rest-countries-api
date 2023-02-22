@@ -111,7 +111,9 @@ $search-outline-color: transparent;
 $search-box-shadow: $box-shadow-1;
 $search-padding-block: $size-3;
 $search-padding-inline-start: $size-10;
-$search-inline-end: $size-15;
+$search-inline-size: 100%;
+$search-medium-inline-size: 140%;
+$search-max-inline-size: 24rem;
 
 // ? ==> Search bar icon
 $search-icon-position: absolute;
@@ -168,3 +170,5 @@ $card__text-container-padding-block-start: 0;
 $card__text-container-color: var(--text-secondary-color);
 $card__strong-color: var(--text-color);
 $card__strong-font-weight: $font-weight-semi-bold;
+$card-max-inline-size: rem(280);
+$card-hover-transform: scale(1.05);
