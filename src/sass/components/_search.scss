@@ -5,6 +5,14 @@
 }
 
 .search {
+  inline-size: $search-inline-size;
+
+  @include mq(medium) {
+    inline-size: $search-medium-inline-size;
+  }
+
+  max-inline-size: $search-max-inline-size;
+
   border-color: $search-border-color;
   border-radius: $search-border-radius;
 
@@ -17,11 +25,10 @@
   outline-color: $search-outline-color;
   box-shadow: $search-box-shadow;
 
+  transition: background-color 500ms ease-in-out, color 500ms ease-in-out;
+
   padding-block: $search-padding-block;
   padding-inline-start: $search-padding-inline-start;
-  padding-inline-end: $search-inline-end;
-
-  transition: background-color 500ms ease-in-out, color 500ms ease-in-out;
 }
 
 .search-outline {
@@ -34,8 +41,12 @@
   margin-block: $search-icon-margin-block;
   inset-inline-start: $search-icon-inset-inline-start;
   inset-block: $search-icon-inset-block;
+
+  path {
+    stroke: var(--text-color);
+  }
 }
 
-label[for="searchbar"] {
+label[for="search-bar"] {
   display: none;
 }
