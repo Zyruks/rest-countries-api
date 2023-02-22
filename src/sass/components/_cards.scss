@@ -41,7 +41,8 @@
     font-weight: $card__strong-font-weight;
   }
 
-  &:hover {
+  &:hover,
+  &:focus-within {
     transform: $card-hover-transform;
   }
 }

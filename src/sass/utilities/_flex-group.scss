@@ -12,3 +12,14 @@
     justify-content: space-between;
   }
 }
+
+.flex-group.mx-auto {
+  justify-content: center;
+
+  @include mq(medium) {
+    &[data-flex-position="center-space-between"] {
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+}
