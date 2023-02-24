@@ -13,6 +13,7 @@ export class Search {
    * text and the card text, and if they don't match, we add the class that hides the card
    */
   searchUpdate() {
+    this.input.value = ""
     this.input.addEventListener("keyup", () => {
       this.cards.forEach((card) => {
         this.input.value === "" ? card.classList.remove("dp-none") : card.classList.add("dp-none")
