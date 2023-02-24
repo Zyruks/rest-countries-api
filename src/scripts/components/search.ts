@@ -12,7 +12,7 @@ export class Search {
    * the cards and remove the class that hides them. Then we loop through the characters in the search
    * text and the card text, and if they don't match, we add the class that hides the card
    */
-  searchUpdate() {
+  public searchUpdate() {
     this.input.value = ""
     this.input.addEventListener("keyup", () => {
       this.cards.forEach((card) => {
@@ -51,7 +51,7 @@ export class Search {
    * We're creating a new option element for each card, setting the value of the option to the card
    * name, and appending the option to the select element
    */
-  createOptions() {
+  public createOptions() {
     const searchOptions = document.querySelector("#card-name")
 
     this.cards.forEach((card) => {
