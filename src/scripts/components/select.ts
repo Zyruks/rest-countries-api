@@ -1,14 +1,13 @@
 export class CustomSelectOptions {
-  selector: HTMLSelectElement
   parentElement: HTMLDivElement
 
-  constructor(selector: HTMLSelectElement) {
+  constructor(public selector: HTMLSelectElement) {
     this.selector = selector
     this.parentElement = selector.parentElement as HTMLDivElement
   }
 
   // Method to create the custom select options
-  createOptions() {
+  public createOptions() {
     // Set the "aria-expanded" attribute of the selector to "true"
     this.selector.setAttribute("aria-expanded", "true")
 
@@ -49,7 +48,7 @@ export class CustomSelectOptions {
     this.parentElement.append(customSelect)
   }
 
-  attachCustomSelectOptionEvent(
+  private attachCustomSelectOptionEvent(
     customSelect: HTMLUListElement,
     customSelectOptions: HTMLLIElement,
     option: HTMLOptionElement
@@ -82,7 +81,7 @@ export class CustomSelectOptions {
   }
 
   // Method for hiding the custom options when a click occurs outside of it
-  hideOnClickOutsideElement() {
+  public hideOnClickOutsideElement() {
     document.body.addEventListener("click", (event: Event) => {
       // Check if the click target is not the region selector and the selector is expanded
       if (
@@ -111,7 +110,7 @@ export class CustomSelectOptions {
   /* TODO updateCardVisibility()
   - [ ] create a transition for when the cards are re-arranged
   */
-  updateCardVisibility() {
+  private updateCardVisibility() {
     const cards: NodeListOf<HTMLDivElement> = document.querySelectorAll(".card")
 
     cards.forEach((card: HTMLDivElement) => {

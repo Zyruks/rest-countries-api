@@ -152,24 +152,24 @@ export class Info {
   }
 
   toggleElements() {
-    const cardContainer = document.querySelector(".card-section")
-    const searchSection = document.querySelector(".search-section")
+    const cardContainer = document.querySelector(".card-section") as HTMLDivElement
+    const searchSection = document.querySelector(".search-section") as HTMLDivElement
 
-    if (cardContainer?.classList.contains("dp-none")) {
+    if (cardContainer.classList.contains("dp-none")) {
       setTimeout(() => {
-        cardContainer?.classList.add("anime-fade-in")
-        searchSection?.classList.add("anime-fade-in")
-        cardContainer?.classList.toggle("dp-none")
-        searchSection?.classList.toggle("dp-none")
+        cardContainer.classList.add("anime-fade-in")
+        searchSection.classList.add("anime-fade-in")
+        cardContainer.classList.toggle("dp-none")
+        searchSection.classList.toggle("dp-none")
       }, 500)
 
       setTimeout(() => {
-        cardContainer?.classList.remove("anime-fade-in")
-        searchSection?.classList.remove("anime-fade-in")
+        cardContainer.classList.remove("anime-fade-in")
+        searchSection.classList.remove("anime-fade-in")
       }, 1000)
     } else {
-      cardContainer?.classList.toggle("dp-none")
-      searchSection?.classList.toggle("dp-none")
+      cardContainer.classList.toggle("dp-none")
+      searchSection.classList.toggle("dp-none")
     }
   }
 
