@@ -5,8 +5,6 @@
 
   transition: background-color 500ms ease-in-out;
 
-  animation: anime-fade-in-info 500ms ease-in-out;
-
   .main-block {
     --flow-spacer: 0.6rem;
     --grid-gap-row: 2rem;
@@ -53,41 +51,5 @@
 
   @include mq(large) {
     font-size: $font-size-500;
-  }
-}
-
-.anime-fade-out-info {
-  animation: anime-fade-out-info 500ms ease-in-out forwards;
-}
-
-@keyframes anime-fade-out-info {
-  0% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-
-  50% {
-    opacity: 1;
-  }
-
-  100% {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-}
-
-@keyframes anime-fade-in-info {
-  0% {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-
-  50% {
-    opacity: 1;
-  }
-
-  100% {
-    transform: translateX(0);
-    opacity: 1;
   }
 }
