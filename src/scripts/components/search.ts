@@ -8,27 +8,38 @@ export class Search {
   }
 
   /**
-  This method updates the card visibility based on the user's input in the search bar.
+   * We add an event listener to the input field, and when the user types something, we loop through all
+   * the cards and remove the class that hides them. Then we loop through the characters in the search
+   * text and the card text, and if they don't match, we add the class that hides the card
    */
   searchUpdate() {
-    this.cards.forEach((card) => {
-      this.input.addEventListener("change", () => {
-        if (this.input.value === "") {
-          card.classList.remove("dp-none")
-        }
-      })
+    this.input.addEventListener("keyup", () => {
+      this.cards.forEach((card) => {
+        this.input.value === "" ? card.classList.remove("dp-none") : card.classList.add("dp-none")
 
-      this.input.addEventListener("keydown", (e) => {
-        if (e.key === "Enter") {
-          const cardName = card.querySelector("h2")?.textContent
-          card.classList.remove("dp-none")
+        // Convert the search text to lowercase and spread it into an array
+        const searchText = [...this.input.value.toLowerCase()]
 
-          if (this.input.value === "") {
+        // Get the text content of the card's h2 element (if it exists),
+        // convert it to lowercase, and spread it into an array
+        const cardText = [...(card.querySelector("h2")?.textContent || "").toLowerCase()]
+
+        // Join the search text array into a string to make it easier to compare
+        const searchMatch = searchText.join("")
+
+        // Initialize an empty string to hold the card's text as it is compared to the search text
+        let cardMatch: string = ""
+
+        // Loop over the search text and the card text simultaneously,
+        // comparing each character
+
+        for (let index = 0; index < Math.min(searchText.length, cardText.length); index++) {
+          cardMatch += cardText[index]
+
+          // If there is a match between the search text and the card text, show the card
+          if (searchMatch === cardMatch) {
             card.classList.remove("dp-none")
-            return
-          }
-          if (this.input.value.toLocaleLowerCase() !== cardName?.toLocaleLowerCase()) {
-            card.classList.add("dp-none")
+            console.log(cardMatch)
           }
         }
       })
