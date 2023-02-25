@@ -1,12 +1,14 @@
 import { Country } from "../tools/fetch"
-export class Info {
-  fetchData: Country[]
 
-  constructor(fetchData: Country[]) {
+export class Info {
+  container: HTMLDivElement
+
+  constructor(protected fetchData: Country[]) {
     this.fetchData = fetchData
+    this.container = document.querySelector(".info-section") as HTMLDivElement
   }
 
-  async renderInfo() {
+  renderInfo() {
     const countries = this.fetchData
 
     const allCards: NodeListOf<HTMLDivElement> = document.querySelectorAll(".card")
@@ -41,7 +43,6 @@ export class Info {
   updateText(data: Country[], template: HTMLTemplateElement, target: string) {
     data.forEach((country: Country) => {
       const node = template.content.cloneNode(true) as HTMLElement
-      const container = document.querySelector(".info-section")
 
       if (target === country.name.toLocaleLowerCase()) {
         const infoComponent = node.querySelector(".info") as HTMLDivElement
@@ -87,14 +88,46 @@ export class Info {
           }
         })
 
-        console.log(container?.firstChild)
-        container?.appendChild(node)
+        console.log(this.container?.firstChild)
+        this.container?.appendChild(node)
+        this.animate(true)
         setTimeout(() => {
           this.updateButtons()
 
           this.newInfoFromBorder(template)
         }, 500)
       }
+    })
+  }
+
+  private animate(isEntryAnimation: boolean): void {
+    // Get all elements with class "info"
+    const infoComponents: NodeListOf<HTMLDivElement> = document.querySelectorAll(".info")
+
+    // Set class names and start/end values based on the animation direction
+    const fadeClass = isEntryAnimation ? "anime-fade-in" : "anime-fade-out"
+    const translateClass = "anime-translate-x"
+    const startValue = isEntryAnimation ? "100%" : "0"
+    const endValue = isEntryAnimation ? "0" : "100%"
+
+    // Iterate over each info component
+    infoComponents.forEach((component: HTMLDivElement) => {
+      // Add classes and start/end values for animation
+      component.classList.add(fadeClass)
+      component.classList.add(translateClass)
+      component.style.setProperty("--anime-translate-x-start", startValue)
+      component.style.setProperty("--anime-translate-x-end", endValue)
+
+      // Remove classes and style after animation duration
+      component.addEventListener(
+        "animationend",
+        () => {
+          component.classList.remove(fadeClass)
+          component.classList.remove(translateClass)
+          component.removeAttribute("style")
+        },
+        { once: true }
+      )
     })
   }
 
@@ -119,10 +152,25 @@ export class Info {
   }
 
   toggleElements() {
-    const cardContainer = document.querySelector(".card-section")
-    const searchSection = document.querySelector(".search-section")
-    cardContainer?.classList.toggle("dp-none")
-    searchSection?.classList.toggle("dp-none")
+    const cardContainer = document.querySelector(".card-section") as HTMLDivElement
+    const searchSection = document.querySelector(".search-section") as HTMLDivElement
+
+    if (cardContainer.classList.contains("dp-none")) {
+      setTimeout(() => {
+        cardContainer.classList.add("anime-fade-in")
+        searchSection.classList.add("anime-fade-in")
+        cardContainer.classList.toggle("dp-none")
+        searchSection.classList.toggle("dp-none")
+      }, 500)
+
+      setTimeout(() => {
+        cardContainer.classList.remove("anime-fade-in")
+        searchSection.classList.remove("anime-fade-in")
+      }, 1000)
+    } else {
+      cardContainer.classList.toggle("dp-none")
+      searchSection.classList.toggle("dp-none")
+    }
   }
 
   /**
@@ -131,7 +179,7 @@ export class Info {
   removeInfo() {
     const infoComponents: NodeListOf<HTMLDivElement> = document.querySelectorAll(".info")
     infoComponents.forEach((component) => {
-      component.classList.add("anime-fade-out-info")
+      this.animate(false)
 
       setTimeout(() => {
         component.remove()

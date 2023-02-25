@@ -11,10 +11,9 @@
 
   background-color: $selector-custom-options-background-color;
   box-shadow: $selector-custom-options-box-shadow;
+
   inset-inline: $selector-custom-options-inset-inline;
   margin-block-start: $selector-custom-options-margin-block-start;
-
-  animation: anime-fade-in 500ms ease-in-out forwards;
 
   li {
     cursor: pointer;
@@ -32,38 +31,5 @@
     &:hover {
       background-color: var(--hover-bg-color);
     }
-  }
-}
-
-// Animations for this component
-@keyframes anime-fade-in {
-  0% {
-    transform: translateY(rem(-30));
-    opacity: 0;
-  }
-
-  40% {
-    opacity: 0;
-  }
-
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes anime-fade-out {
-  0% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-
-  40% {
-    opacity: 0;
-  }
-
-  100% {
-    transform: translateY(rem(-30));
-    opacity: 0;
   }
 }

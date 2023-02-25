@@ -33,6 +33,8 @@
 
   border: $dark-light-button-border;
 
+  overflow: hidden;
+
   color: $dark-light-button-text-color;
   font-weight: $dark-light-button-font-weight;
   font-size: $dark-light-button-font-size;
@@ -41,6 +43,10 @@
 
   padding-inline-start: $dark-light-button-padding-inline-start;
   padding-inline-end: $dark-light-button-padding-inline-end;
+
+  @include mq(medium) {
+    overflow: visible;
+  }
 
   .mode-icon {
     --icon-color: var(--text-color);

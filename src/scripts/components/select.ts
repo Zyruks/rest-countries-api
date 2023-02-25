@@ -1,14 +1,13 @@
 export class CustomSelectOptions {
-  selector: HTMLSelectElement
   parentElement: HTMLDivElement
 
-  constructor(selector: HTMLSelectElement) {
+  constructor(public selector: HTMLSelectElement) {
     this.selector = selector
     this.parentElement = selector.parentElement as HTMLDivElement
   }
 
   // Method to create the custom select options
-  createOptions() {
+  public createOptions() {
     // Set the "aria-expanded" attribute of the selector to "true"
     this.selector.setAttribute("aria-expanded", "true")
 
@@ -17,7 +16,7 @@ export class CustomSelectOptions {
 
     // Create the options container element
     const customSelect: HTMLUListElement = document.createElement("ul")
-    customSelect.className = "select-custom-options"
+    customSelect.className = "select-custom-options anime-fade-in "
 
     // Get the original options elements from the selector
     const originalOptionsElements = Array.from(this.selector.children) as HTMLOptionElement[]
@@ -49,7 +48,7 @@ export class CustomSelectOptions {
     this.parentElement.append(customSelect)
   }
 
-  attachCustomSelectOptionEvent(
+  private attachCustomSelectOptionEvent(
     customSelect: HTMLUListElement,
     customSelectOptions: HTMLLIElement,
     option: HTMLOptionElement
@@ -68,7 +67,7 @@ export class CustomSelectOptions {
       this.parentElement.dispatchEvent(new Event("change"))
 
       // Add a fade-out animation to the custom select element and rotate the select icon back to its original position
-      customSelect.style.animationName = "anime-fade-out"
+      customSelect.classList.add("anime-fade-out")
       this.parentElement.style.setProperty("--rotate-select-icon", "0")
 
       // Remove the custom select element from the DOM after a delay of 500ms
@@ -82,7 +81,7 @@ export class CustomSelectOptions {
   }
 
   // Method for hiding the custom options when a click occurs outside of it
-  hideOnClickOutsideElement() {
+  public hideOnClickOutsideElement() {
     document.body.addEventListener("click", (event: Event) => {
       // Check if the click target is not the region selector and the selector is expanded
       if (
@@ -93,7 +92,7 @@ export class CustomSelectOptions {
         const customOptions = this.parentElement.querySelector(
           ".select-custom-options"
         ) as HTMLUListElement
-        customOptions.style.animationName = "anime-fade-out"
+        customOptions.classList.add("anime-fade-out")
 
         // Rotate the select icon back to its original position
         this.parentElement.style.setProperty("--rotate-select-icon", "0")
@@ -111,7 +110,7 @@ export class CustomSelectOptions {
   /* TODO updateCardVisibility()
   - [ ] create a transition for when the cards are re-arranged
   */
-  updateCardVisibility() {
+  private updateCardVisibility() {
     const cards: NodeListOf<HTMLDivElement> = document.querySelectorAll(".card")
 
     cards.forEach((card: HTMLDivElement) => {
